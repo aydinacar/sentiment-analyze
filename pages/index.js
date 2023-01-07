@@ -4,7 +4,7 @@ import FrownIcon from '../components/icons/FrownIcon'
 import SmileIcon from '../components/icons/SmileIcon'
 export default function Home() {
   const [text, setText] = useState('')
-  const [score, setScore] = useState(0)
+  const [score, setScore] = useState(null)
 
   const analyzeSentiment = async () => {
     const res = await fetch('/api/sentiment', {
@@ -66,7 +66,9 @@ export default function Home() {
           <p className="text-xl font-bold">Score:</p> <p> {score} </p>
         </div>
 
-        <div className="flex items-center justify-center w-full">{score > 0 ? <SmileIcon /> : <FrownIcon />}</div>
+        <div className="flex items-center justify-center w-full">
+          {score && score > 0 ? <SmileIcon /> : <FrownIcon />}
+        </div>
       </div>
     </div>
   )
