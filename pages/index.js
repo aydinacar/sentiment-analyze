@@ -1,5 +1,7 @@
 import Head from 'next/head'
 import React, { useState, useEffect } from 'react'
+import FrownIcon from '../components/icons/FrownIcon'
+import SmileIcon from '../components/icons/SmileIcon'
 export default function Home() {
   const [text, setText] = useState('')
   const [score, setScore] = useState(0)
@@ -35,18 +37,18 @@ export default function Home() {
         />
       </Head>
 
-      <div className="max-w-3xl mx-auto px-5 py-10">
-        <h1 className="text-center text-3xl font-bold">Sentiment Analysis</h1>
+      <div className="max-w-3xl px-5 py-10 mx-auto">
+        <h1 className="text-3xl font-bold text-center">Sentiment Analysis</h1>
         <form onSubmit={submitHandler}>
           <div className="w-full my-3">
             <label
               htmlFor="text"
               className="w-full"
             >
-              Text
+              Enter Text
             </label>
             <textarea
-              className="w-full mt-3 px-3 py-2 text-gray-700 border rounded-lg focus:outline-none"
+              className="w-full px-3 py-2 mt-3 text-gray-700 border rounded-lg focus:outline-none"
               placeholder="Your Text"
               name="text"
               value={text}
@@ -60,9 +62,11 @@ export default function Home() {
             Analyze
           </button>
         </form>
-        <div className="w-full flex justify-start items-center my-3">
-          <p className="font-bold text-xl">Score:</p> <p> {score} </p>
+        <div className="flex items-center justify-start w-full my-3">
+          <p className="text-xl font-bold">Score:</p> <p> {score} </p>
         </div>
+
+        <div className="flex items-center justify-center w-full">{score > 0 ? <SmileIcon /> : <FrownIcon />}</div>
       </div>
     </div>
   )
