@@ -2,6 +2,7 @@ import Head from 'next/head'
 import React, { useState, useEffect } from 'react'
 import FrownIcon from '../components/icons/FrownIcon'
 import SmileIcon from '../components/icons/SmileIcon'
+import MehIcon from '../components/icons/MehIcon'
 export default function Home() {
   const [text, setText] = useState('')
   const [score, setScore] = useState(null)
@@ -66,9 +67,11 @@ export default function Home() {
           <p className="text-xl font-bold">Score:</p> <p> {score} </p>
         </div>
 
-        {score && (
-          <div className="flex items-center justify-center w-full">{score > 0 ? <SmileIcon /> : <FrownIcon />}</div>
-        )}
+        <div className="flex items-center justify-center w-full">
+          {score > 0 && <SmileIcon />}
+          {score === 0 && <MehIcon />}
+          {score < 0 && <FrownIcon />}
+        </div>
       </div>
     </div>
   )
