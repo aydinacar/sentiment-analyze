@@ -21,7 +21,6 @@ export default function Home() {
   const submitHandler = async e => {
     e.preventDefault()
     await analyzeSentiment()
-    setText('')
   }
 
   return (
